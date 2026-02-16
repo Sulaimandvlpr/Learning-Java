@@ -1,5 +1,4 @@
-# Phase 2 — EP 01  
-# Operator Perbandingan (Comparison Operators)
+# EP 01 - Operator Perbandingan (Comparison Operators)
 
 Pada episode ini kita masuk ke dasar logika pengambilan keputusan.
 
