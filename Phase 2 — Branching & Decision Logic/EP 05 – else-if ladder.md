@@ -2,8 +2,7 @@
 
 Pada episode ini kita membahas bagaimana menangani lebih dari dua kemungkinan kondisi.
 
-Jika if-else hanya cocok untuk dua kemungkinan,
-maka else-if digunakan ketika ada banyak cabang keputusan.
+Jika if-else hanya cocok untuk dua kemungkinan, maka else-if digunakan ketika ada banyak cabang keputusan.
 
 Ini sering digunakan dalam:
 
