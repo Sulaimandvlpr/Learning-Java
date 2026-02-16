@@ -1,4 +1,3 @@
-````md
 # EP 01 — Apa itu Java, JVM, JDK
 
 ## 1. Apa itu Java
