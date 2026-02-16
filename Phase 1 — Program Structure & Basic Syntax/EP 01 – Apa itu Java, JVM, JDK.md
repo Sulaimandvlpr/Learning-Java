@@ -1,136 +1,210 @@
 ````md
 # EP 01 — Apa itu Java, JVM, JDK
 
-## 1. Apa itu Java?
+## 1. Apa itu Java
 
-Java adalah bahasa pemrograman tingkat tinggi yang:
+Java adalah bahasa pemrograman tingkat tinggi yang dirancang untuk membangun aplikasi yang stabil, aman, dan scalable. Java bersifat object-oriented, strongly typed, dan berjalan di atas JVM sehingga dapat dijalankan di berbagai sistem operasi tanpa perlu ditulis ulang.
 
-- Berbasis Object-Oriented Programming (OOP)
-- Bersifat strongly typed
-- Menggunakan konsep Write Once, Run Anywhere (WORA)
-- Didesain untuk sistem besar, scalable, dan maintainable
+Karakteristik utama Java:
 
-Java sangat relevan di industri 2026 karena:
+- Object-Oriented Programming (OOP)
+- Strongly typed
+- Garbage collected
+- Portable melalui JVM
+- Digunakan luas di backend enterprise, fintech, e-commerce, dan distributed systems
 
-- Digunakan luas pada backend enterprise (banking, fintech, e-commerce)
-- Dominan di sistem microservices berbasis Spring Boot
-- Banyak dipakai di sistem high-traffic dan distributed system
-- Stabil dan memiliki Long Term Support (LTS) release seperti Java 17 dan Java 21
-
-Java bukan hanya bahasa, tetapi bagian dari ekosistem besar yang terdiri dari JVM, JDK, dan berbagai tools build.
+Pada industri 2026, Java tetap dominan karena stabilitas, ekosistem framework seperti Spring, serta dukungan Long Term Support seperti Java 17 dan Java 21.
 
 ---
 
-## 2. Apa itu JVM?
+## 2. Apa itu JVM
 
-JVM adalah Java Virtual Machine.
+JVM adalah Java Virtual Machine. JVM adalah mesin virtual yang menjalankan bytecode hasil kompilasi Java.
 
-JVM adalah mesin virtual yang menjalankan bytecode hasil kompilasi Java.
+Alur kerja Java:
 
-Alur kerja Java adalah:
+- Kita menulis file dengan ekstensi .java
+- Compiler (javac) mengubahnya menjadi bytecode (.class)
+- JVM membaca dan mengeksekusi bytecode tersebut
 
-- Kita menulis kode Java (.java)
-- Kode dikompilasi oleh compiler menjadi bytecode (.class)
-- Bytecode dijalankan oleh JVM
+Ilustrasi sederhana:
 
-Karena JVM tersedia di berbagai sistem operasi, maka program Java bisa dijalankan di Windows, Linux, dan macOS tanpa perlu ditulis ulang.
-
-Contoh ilustrasi alur:
-
-Source Code (.java)
-        ↓
-Compiler (javac)
-        ↓
-Bytecode (.class)
-        ↓
-JVM
-        ↓
-Program berjalan
+Source Code (.java)  
+- javac  
+- Bytecode (.class)  
+- JVM  
+- Program berjalan  
 
 JVM bertanggung jawab atas:
 
-- Memory management
+- Manajemen memori (heap dan stack)
 - Garbage Collection
-- Keamanan runtime
 - Eksekusi bytecode
 - Thread management
+- Keamanan runtime
 
-Di industri, pemahaman JVM penting untuk:
-
-- Optimasi performa
-- Debugging memory leak
-- Tuning garbage collection
-- Menangani aplikasi high-load
+Inilah alasan Java disebut portable, karena yang berbeda antar sistem operasi adalah JVM-nya, bukan programnya.
 
 ---
 
-## 3. Apa itu JDK?
+## 3. Apa itu JDK
 
-JDK adalah Java Development Kit.
+JDK adalah Java Development Kit. JDK adalah paket lengkap untuk mengembangkan aplikasi Java.
 
-JDK adalah paket lengkap untuk mengembangkan aplikasi Java.
-
-JDK berisi:
+Isi JDK:
 
 - Compiler (javac)
 - JVM
-- Standard library
+- Standard Library
 - Tools debugging
 - Tools packaging
 
-Tanpa JDK, kita tidak bisa mengembangkan program Java.
+Perbedaannya:
 
-Perbedaan singkat:
+- JVM hanya menjalankan program
+- JDK digunakan untuk membuat dan menjalankan program
 
-- JVM hanya untuk menjalankan
-- JDK untuk mengembangkan
-- JRE adalah runtime environment (sudah deprecated secara terpisah, sekarang terintegrasi dalam JDK modern)
+Tanpa JDK, kita tidak bisa meng-compile kode Java.
 
 ---
 
-## 4. Contoh Program Java Sederhana
+## 4. Struktur Program Java Dasar
 
-Berikut contoh program paling dasar.
-
-Contoh 1 — Program Hello World
+Contoh program sederhana:
 
 ```java
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello, Java 2026!");
+        System.out.println("Hello, Java!");
     }
 }
 ````
 
 Output:
 
+```text
+Hello, Java!
 ```
-Hello, Java 2026!
-```
+
+Sekarang kita bedah setiap bagian kode tersebut secara teknis dan benar.
+
+### public class Main
 
 Penjelasan:
 
-* public class Main adalah deklarasi kelas
-* main adalah entry point program
-* System.out.println() digunakan untuk mencetak output ke console
+* class adalah blueprint atau cetakan untuk membuat object
+* Main adalah nama class
+* public adalah access modifier yang berarti class ini dapat diakses dari mana saja
+* Nama file harus sama dengan nama class jika class tersebut public, sehingga file harus bernama Main.java
+
+Struktur umum deklarasi class:
+
+```java
+access_modifier class NamaClass {
+}
+```
+
+Contoh lain:
+
+```java
+public class Calculator {
+}
+```
 
 ---
 
-## 5. Contoh Proses Kompilasi dan Eksekusi
+### public static void main(String[] args)
 
-Jika file bernama Main.java, maka jalankan:
+Ini adalah method utama yang menjadi entry point program Java.
+
+Penjelasan tiap kata:
+
+* public berarti method ini dapat diakses oleh JVM
+* static berarti method ini milik class, bukan object
+* void berarti method ini tidak mengembalikan nilai
+* main adalah nama method yang dicari JVM saat program dijalankan
+* String[] args adalah parameter berupa array String untuk menerima argumen dari command line
+
+Tanpa method main, program tidak bisa dijalankan secara langsung.
+
+Contoh variasi argumen:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(args[0]);
+    }
+}
+```
+
+Jika dijalankan dengan:
+
+```bash
+java Main Halo
+```
+
+Output:
+
+```text
+Halo
+```
+
+---
+
+### System.out.println()
+
+Ini adalah perintah untuk mencetak output ke console.
+
+Penjelasan detail:
+
+* System adalah class bawaan Java dari package java.lang
+* out adalah objek static bertipe PrintStream
+* println() adalah method untuk mencetak teks dan pindah baris
+
+Struktur dasarnya:
+
+```java
+System.out.println("Teks");
+```
+
+Jika tidak ingin pindah baris:
+
+```java
+System.out.print("Teks");
+```
+
+Contoh:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        System.out.print("Halo ");
+        System.out.println("Dunia");
+    }
+}
+```
+
+Output:
+
+```text
+Halo Dunia
+```
+
+---
+
+## 5. Proses Kompilasi dan Eksekusi
+
+Langkah 1 — Kompilasi
 
 ```bash
 javac Main.java
 ```
 
-Perintah ini menghasilkan file:
+File yang dihasilkan:
 
-```
 Main.class
-```
 
-Lalu jalankan dengan:
+Langkah 2 — Eksekusi
 
 ```bash
 java Main
@@ -138,25 +212,23 @@ java Main
 
 Output:
 
-```
-Hello, Java 2026!
+```text
+Hello, Java!
 ```
 
-Ini menunjukkan bahwa:
+Penjelasan teknis:
 
 * javac mengubah source code menjadi bytecode
-* java menjalankan bytecode menggunakan JVM
+* java memanggil JVM untuk menjalankan bytecode tersebut
 
 ---
 
-## 6. Contoh Program dengan Variabel
-
-Contoh 2 — Menggunakan Variabel
+## 6. Contoh Dengan Variabel
 
 ```java
 public class Main {
     public static void main(String[] args) {
-        int age = 20;
+        int age = 21;
         String name = "Eman";
 
         System.out.println("Nama: " + name);
@@ -167,44 +239,36 @@ public class Main {
 
 Output:
 
-```
+```text
 Nama: Eman
-Umur: 20
+Umur: 21
 ```
 
 Penjelasan:
 
-* int adalah tipe data bilangan bulat
-* String adalah tipe data teks
-* Tanda + digunakan untuk menggabungkan string
+* int adalah tipe data primitif untuk bilangan bulat
+* String adalah class untuk teks
+* Tanda + digunakan untuk menggabungkan string dengan variabel
 
 ---
 
-## 7. Kenapa Java Masih Relevan di 2026?
+## 7. Ringkasan Konsep Penting
 
-Java tetap kuat karena:
-
-* Stabil dan backward compatible
-* Banyak digunakan di enterprise
-* Mendukung microservices dan cloud-native
-* Mendukung concurrency tingkat tinggi
-* Memiliki Virtual Threads (Java 21)
-* Ekosistem framework sangat matang
-
-Contoh penggunaan nyata di industri:
-
-* Sistem transaksi bank
-* API backend e-commerce
-* Sistem pembayaran
-* Distributed systems
-* Platform data processing
-
----
-
-## 8. Ringkasan EP 01
-
-* Java adalah bahasa OOP untuk sistem besar
+* Java adalah bahasa OOP yang berjalan di atas JVM
 * JVM menjalankan bytecode
 * JDK digunakan untuk mengembangkan aplikasi
-* Java bersifat portable karena JVM
-* Program Java dikompilasi menjadi .class sebelum dijalankan
+* Program Java selalu memiliki method main sebagai entry point
+* System.out.println digunakan untuk menampilkan output
+
+---
+
+## 8. Target Pemahaman Setelah EP 01
+
+* Memahami perbedaan Java, JVM, dan JDK
+* Mengerti struktur dasar program Java
+* Mengetahui fungsi public, class, static, void, dan main
+* Mengerti bagaimana program dikompilasi dan dijalankan
+* Mampu menulis dan menjalankan program sederhana
+
+```
+```
